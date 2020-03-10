@@ -214,7 +214,33 @@ function isBST(tree, min, max) {
   return true;
 }
 
+//take in a full tree
+//return 3rd largest key => somewhere close to result of _findMax()
+//{nth: 3, result: null}
+function nthLargest(tree, state) { //state obj with two properties
+    if(tree.right) {
+        nthLargest(tree.right, state)
+        if(state.result) {
+            return;
+        }
+    }
+    if(!--state.nth) {
+        state.result = tree.key
+        return; 
+    }
+    if(tree.left) {
+        nthLargest(tree.left, state)
+    }
+}
 
+function findThirdLargest(tree) {
+    if(!tree.key){
+        return null
+    }
+    let state = {nth: 3, result: null}
+    nthLargest(tree, state)
+    return state.result
+}
 
 
 function main () {
@@ -231,7 +257,7 @@ function main () {
   BST.insert(5, 5);
   BST.insert(7, 7);
 
-  BST2.insert('e');
+  BST2.insert('e'); //a e e i n o q s t u y
   BST2.insert('a');
   BST2.insert('s');
   BST2.insert('y');
@@ -253,7 +279,7 @@ function main () {
   //tree(BST)
 
   //  return console.log(tree(BST));
-  return console.log(isBST(BST));
+  return console.log(findThirdLargest(BST));
 }
 main();
 
