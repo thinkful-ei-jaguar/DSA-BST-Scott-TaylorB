@@ -7,7 +7,6 @@ class BinarySearchTree {
         this.right = null;
     }
     insert(key, value) {
-        // If the tree is empty then this key being inserted is the root node of the tree
         if (this.key == null) {
             this.key = key;
             this.value = value;
@@ -141,3 +140,46 @@ class BinarySearchTree {
     }
 
 }
+
+
+//Exercise 4 tree function:
+//Best guess, adds up all the values in the tree
+//guess output with BST tree, 37
+function tree(t){
+    if(!t){
+        return 0;
+    }
+    return tree(t.left) + t.value + tree(t.right)
+}
+
+function main () {
+    let BST = new BinarySearchTree()
+    let BST2 = new BinarySearchTree()
+
+    BST.insert(3, 3)
+    BST.insert(1, 1)
+    BST.insert(4, 4)
+    BST.insert(6, 6)
+    BST.insert(9, 9)
+    BST.insert(2, 2)
+    BST.insert(5, 5)
+    BST.insert(7, 7)
+
+    BST2.insert('e')
+    BST2.insert('a')
+    BST2.insert('s')
+    BST2.insert('y')
+    BST2.insert('q')
+    BST2.insert('u')
+    BST2.insert('e')
+    BST2.insert('s')
+    BST2.insert('t')
+    BST2.insert('i')
+    BST2.insert('o')
+    BST2.insert('n')
+
+    //tree(BST)
+
+    return console.log(tree(BST))
+}
+main()
