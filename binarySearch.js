@@ -242,6 +242,33 @@ function findThirdLargest(tree) {
     return state.result
 }
 
+//our attempt
+// function isBalanced(tree) {
+//     if(tree.key == null) {
+//         return true;
+//     }
+//     const max = tree._findMax();
+//     const min = tree._findMin();
+//     if(max - min < 1) {
+//         return true;
+//     }
+//     else {
+//         return false;
+//     }
+// }
+
+//solution
+function isBalanced (tree) {
+    if (!tree.left) {
+        return !(tree.right && (tree.right.left || tree.right.right));
+    }
+    if (!tree.right) {
+        return !(tree.left && (tree.left.left || tree.left.right));
+    }
+    return isBalanced(tree.left) && isBalanced(tree.right);
+}
+
+
 
 function main () {
   let BST = new BinarySearchTree();
@@ -270,16 +297,16 @@ function main () {
   BST2.insert('o');
   BST2.insert('n');
 
-  BST3.insert(1);
-  BST3.insert(2);
-  BST3.insert(3);
-  BST3.insert(4);
-  BST3.insert(5);
+    BST3.insert(2);
+    BST3.insert(3);
+    BST3.insert(1);
+//   BST3.insert(4);
+//   BST3.insert(5);
 
   //tree(BST)
 
   //  return console.log(tree(BST));
-  return console.log(findThirdLargest(BST));
+  return console.log(isBalanced(BST3));
 }
 main();
 
