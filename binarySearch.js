@@ -268,6 +268,14 @@ function isBalanced (tree) {
     return isBalanced(tree.left) && isBalanced(tree.right);
 }
 
+const arr1 = [3, 5, 4, 6, 1, 0, 2]
+const arr2 = [3, 1, 5, 2, 4, 6, 0]
+
+//if arrays arent the same length => false
+//doesn't start with the same number => false
+//if they don't have the same set of numbers => false
+
+
 
 
 function main () {
